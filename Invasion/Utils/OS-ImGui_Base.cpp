@@ -20,7 +20,11 @@ namespace OSImGui
         ImFontAtlas* fontAtlas = new ImFontAtlas();
         ImFontConfig arialConfig;
         arialConfig.FontDataOwnedByAtlas = false;
-        ImFont* arialFont = fontAtlas->AddFontFromMemoryTTF(INTER, sizeof INTER, 17.0f, &arialConfig, io.Fonts->GetGlyphRangesChineseFull());
+        arialFont = fontAtlas->AddFontFromMemoryTTF(INTER, sizeof INTER, 17.0f, &arialConfig, io.Fonts->GetGlyphRangesDefault());
+
+        ImFontConfig logoCfg;
+        logoCfg.FontDataOwnedByAtlas = false;
+        logoFont = fontAtlas->AddFontFromMemoryTTF(INVASION, sizeof INVASION, 25.0f, &logoCfg);
 
         io.Fonts = fontAtlas;
 
