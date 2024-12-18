@@ -107,7 +107,28 @@
     <ClInclude Include="Utils\stb\stb_image.h">
       <Filter>sources\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\images.h">
+    <ClInclude Include="View.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\ProcessManager.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Bone.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\Globals.hpp">
+      <Filter>sources\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Configs.hpp">
       <Filter>sources\imgui</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,6 +183,15 @@
     </ClCompile>
     <ClCompile Include="Utils\imgui\imgui_impl_dx9.cpp">
       <Filter>sources\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

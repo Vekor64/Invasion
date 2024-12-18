@@ -130,8 +130,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bone.hpp" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="Game.hpp" />
     <ClInclude Include="GUI.h" />
-    <ClInclude Include="Resource\images.h" />
+    <ClInclude Include="Configs.hpp" />
+    <ClInclude Include="Memory\Globals.hpp" />
+    <ClInclude Include="Offsets.hpp" />
+    <ClInclude Include="Memory\ProcessManager.hpp" />
     <ClInclude Include="Utils\FONT.h" />
     <ClInclude Include="Utils\imgui\font.h" />
     <ClInclude Include="Utils\imgui\imconfig.h" />
@@ -160,8 +166,12 @@
     <ClInclude Include="Utils\OS-ImGui_Internal.h" />
     <ClInclude Include="Utils\OS-ImGui_Struct.h" />
     <ClInclude Include="Utils\stb\stb_image.h" />
+    <ClInclude Include="View.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bone.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Utils\imgui\imgui.cpp" />
     <ClCompile Include="Utils\imgui\imgui_draw.cpp" />
     <ClCompile Include="Utils\imgui\imgui_impl_dx11.cpp" />

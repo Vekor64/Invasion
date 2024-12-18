@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Utils/imgui/font.h"
 #include "Utils/OS-ImGui.h"
-#include "Resource/images.h"
 #include "Utils/FONT.h"
 
 DWORD picker_flags = ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaPreview;
