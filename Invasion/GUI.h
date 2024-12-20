@@ -4,6 +4,7 @@
 #include "Utils/imgui/font.h"
 #include "Utils/OS-ImGui.h"
 #include "Utils/FONT.h"
+#include "Configs.hpp"
 
 DWORD picker_flags = ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaPreview;
 
@@ -53,14 +54,18 @@ namespace GUI
 			const ImVec2& spacing = style->ItemSpacing;
 			const ImVec2& region = ImGui::GetContentRegionMax();
 
-			ImGui::GetBackgroundDrawList()->AddRectFilled(pos, pos + ImVec2(1100, 625), ImGui::GetColorU32(c::bg::background), c::bg::rounding);
+			ImVec2 pos1 = ImVec2(pos.x + 0, pos.y + 30 + spacing.y);
+			ImVec2 size1 = ImVec2(1100 - spacing.x, 115 + spacing.y);
+			ImVec2 adjustedPos1 = ImVec2(pos1.x + spacing.x, pos1.y + spacing.y);
+			ImGui::GetBackgroundDrawList()->AddRectFilled(pos, ImVec2(pos.x + 1100, pos.y + 625), ImGui::GetColorU32(c::bg::background), c::bg::rounding);
 			
-			ImGui::GetBackgroundDrawList()->AddRectFilled(pos + ImVec2(0, 30 + spacing.y) + spacing, pos + ImVec2(1100 - (spacing.x), 115 + spacing.y), ImGui::GetColorU32(c::child::background), c::child::rounding);
-			ImGui::GetBackgroundDrawList()->AddRect(pos + ImVec2(0, 30 + spacing.y) + spacing, pos + ImVec2(1100 - (spacing.x), 115 + spacing.y), ImGui::GetColorU32(c::child::outline), c::child::rounding);
+			ImGui::GetBackgroundDrawList()->AddRectFilled(adjustedPos1, ImVec2(pos.x + 1100 - spacing.x, pos.y + 115 + spacing.y), ImGui::GetColorU32(c::child::background), c::child::rounding);
+			ImGui::GetBackgroundDrawList()->AddRect(adjustedPos1, ImVec2(pos.x + 1100 - spacing.x, pos.y + 115 + spacing.y), ImGui::GetColorU32(c::child::outline), c::child::rounding);
 
-			ImGui::PushFont(logoFont);
-			ImGui::GlowText(ImGui::GetFont(), 35.f, "Invasion", pos + (ImVec2(1100, 30 + spacing.y) + spacing - ImGui::CalcTextSize("AIMSTAR")) / 2, ImGui::GetColorU32(c::accent));
-			ImGui::PopFont();
+			ImVec2 textSize = ImGui::CalcTextSize("Invasion");
+			ImVec2 textPos = ImVec2(pos.x + (1100 - textSize.x) / 2, pos.y + (30 + spacing.y + spacing.y - textSize.y) / 2);
+			ImGui::GlowText(ImGui::GetIO().Fonts->Fonts[1], 35.f, "Invasion", textPos, ImGui::GetColorU32(c::accent));
+			
 
 			static int tabs = 0, sub_tabs = 0;
 
@@ -79,36 +84,46 @@ namespace GUI
 			ImGui::EndGroup();
 
 			ImGui::SetCursorPos(ImVec2(spacing.x, 115 + spacing.y * 2));
-
-			ImGui::BeginGroup();
+			if (sub_tabs == 0)
 			{
-				ImGui::CustomBeginChild("Basic ESP", ImVec2((region.x - (spacing.x * 3 + 180)) / 3, (region.y - (spacing.y * 2)) - 150));
+				ImGui::BeginGroup();
 				{
+					ImGui::CustomBeginChild("Basic ESP", ImVec2((region.x - (spacing.x * 3 + 180)) / 3, (region.y - (spacing.y * 2)) - 150));
+					{
 
-					static float Col[4] = { 0.f, 1.f, 0.f, 1.f };
-					static bool aimbot = true;
-					ImGui::Pickerbox("Enabled ESP", &aimbot, Col, picker_flags);
+						static float Col[4] = { 0.f, 1.f, 0.f, 1.f };
+						static bool aimbot = true;
+						ImGui::Checkbox("Enable ESP", &ESPConfig::enabled);
 
-					ImGui::Pickerbox("Box", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Bone", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Head Box", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Health Bar", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Weapon", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Name", &aimbot, Col, picker_flags);
-					ImGui::Pickerbox("Ammo", &aimbot, Col, picker_flags);
+						ImGui::Pickerbox("Box", &ESPConfig::ShowBoxESP, ESPConfig::BoxColor, picker_flags);
+						ImGui::Pickerbox("Bone", &ESPConfig::ShowBoneESP, ESPConfig::BoneColor, picker_flags);
+						ImGui::Pickerbox("Head Box", &ESPConfig::ShowHeadBox, ESPConfig::HeadBoxColor, picker_flags);
+						ImGui::Checkbox("Health Bar", &ESPConfig::ShowHealthBar);
+						ImGui::Checkbox("Name", &ESPConfig::ShowPlayerName);
 
-					static int smooth = 7;
-					ImGui::SliderInt("Type", &smooth, 0, 8);
+						static int smooth = 7;
+						ImGui::SliderInt("Type", &smooth, 0, 8);
 
-					static float silent_fov = 5;
-					ImGui::SliderFloat("Render Distance", &silent_fov, 0.f, 255.f, "%.fm");
-
-					ImGui::ColorEdit4("Color Picker", color, picker_flags);
+						static float silent_fov = 255;
+						ImGui::SliderFloat("Render Distance", &silent_fov, 0.f, 255.f, "%.fm");
+					}
+					ImGui::CustomEndChild();
 				}
-				ImGui::CustomEndChild();
+				ImGui::EndGroup();
 			}
-			ImGui::EndGroup();
-
+			if (sub_tabs == 3)
+			{
+				ImGui::BeginGroup();
+				{
+					ImGui::CustomBeginChild("Menu Settings", ImVec2((region.x - (spacing.x * 3 + 180)) / 3, (region.y - (spacing.y * 2)) - 150));
+					{
+						ImGui::ColorEdit4("Menu Color", color, picker_flags);
+					}
+					ImGui::CustomEndChild();
+				}
+				ImGui::EndGroup();
+			}
+			
 		}ImGui::End();
 
 	}

@@ -114,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bone.hpp" />
+    <ClInclude Include="Cheats.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GUI.h" />
@@ -138,7 +139,9 @@
     <ClInclude Include="Memory\Globals.hpp" />
     <ClInclude Include="Offsets.hpp" />
     <ClInclude Include="Memory\ProcessManager.hpp" />
+    <ClInclude Include="Render.hpp" />
     <ClInclude Include="Utils\FONT.h" />
+    <ClInclude Include="Utils\Format.hpp" />
     <ClInclude Include="Utils\imgui\font.h" />
     <ClInclude Include="Utils\imgui\imconfig.h" />
     <ClInclude Include="Utils\imgui\imgui.h" />
@@ -159,6 +162,7 @@
     <ClInclude Include="Utils\Minhook\table32.h" />
     <ClInclude Include="Utils\Minhook\table64.h" />
     <ClInclude Include="Utils\Minhook\trampoline.h" />
+    <ClInclude Include="Utils\NewColor.hpp" />
     <ClInclude Include="Utils\OS-ImGui.h" />
     <ClInclude Include="Utils\OS-ImGui_Base.h" />
     <ClInclude Include="Utils\OS-ImGui_Exception.hpp" />
@@ -166,12 +170,52 @@
     <ClInclude Include="Utils\OS-ImGui_Internal.h" />
     <ClInclude Include="Utils\OS-ImGui_Struct.h" />
     <ClInclude Include="Utils\stb\stb_image.h" />
+    <ClInclude Include="Utils\yaml-cpp\anchor.h" />
+    <ClInclude Include="Utils\yaml-cpp\binary.h" />
+    <ClInclude Include="Utils\yaml-cpp\contrib\anchordict.h" />
+    <ClInclude Include="Utils\yaml-cpp\contrib\graphbuilder.h" />
+    <ClInclude Include="Utils\yaml-cpp\depthguard.h" />
+    <ClInclude Include="Utils\yaml-cpp\dll.h" />
+    <ClInclude Include="Utils\yaml-cpp\emitfromevents.h" />
+    <ClInclude Include="Utils\yaml-cpp\emitter.h" />
+    <ClInclude Include="Utils\yaml-cpp\emitterdef.h" />
+    <ClInclude Include="Utils\yaml-cpp\emittermanip.h" />
+    <ClInclude Include="Utils\yaml-cpp\emitterstyle.h" />
+    <ClInclude Include="Utils\yaml-cpp\eventhandler.h" />
+    <ClInclude Include="Utils\yaml-cpp\exceptions.h" />
+    <ClInclude Include="Utils\yaml-cpp\mark.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\convert.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\impl.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\iterator.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\iterator_fwd.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\memory.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\node.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\node_data.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\node_iterator.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\detail\node_ref.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\emit.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\impl.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\iterator.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\node.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\parse.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\ptr.h" />
+    <ClInclude Include="Utils\yaml-cpp\node\type.h" />
+    <ClInclude Include="Utils\yaml-cpp\noexcept.h" />
+    <ClInclude Include="Utils\yaml-cpp\null.h" />
+    <ClInclude Include="Utils\yaml-cpp\ostream_wrapper.h" />
+    <ClInclude Include="Utils\yaml-cpp\parser.h" />
+    <ClInclude Include="Utils\yaml-cpp\stlemitter.h" />
+    <ClInclude Include="Utils\yaml-cpp\traits.h" />
+    <ClInclude Include="Utils\yaml-cpp\yaml.h" />
+    <ClInclude Include="Utils\YAML.h" />
     <ClInclude Include="View.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bone.cpp" />
+    <ClCompile Include="Cheats.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Offsets.cpp" />
     <ClCompile Include="Utils\imgui\imgui.cpp" />
     <ClCompile Include="Utils\imgui\imgui_draw.cpp" />
     <ClCompile Include="Utils\imgui\imgui_impl_dx11.cpp" />
@@ -195,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Utils\freetype.lib" />
+    <Library Include="Utils\yaml-cpp\lib\yaml-cpp.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

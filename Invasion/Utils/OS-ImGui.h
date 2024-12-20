@@ -20,7 +20,7 @@ namespace OSImGui
 		void Rectangle(Vec2 Pos, Vec2 Size, ImColor Color, float Thickness, float Rounding = 0);
 		void RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float Rounding = 0, int Nums = 15);
 		// Ïß
-		void Line(Vec2 From, Vec2 To, ImColor Color, float Thickness);
+		void Line(Vec2 From, Vec2 To, ImColor Color, float Thickness, bool IsItem);
 		// Ô²ÐÎ
 		void Circle(Vec2 Center, float Radius, ImColor Color,float Thickness, int Num = 50);
 		void CircleFilled(Vec2 Center, float Radius, ImColor Color, int Num = 50);

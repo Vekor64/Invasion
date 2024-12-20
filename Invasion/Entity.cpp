@@ -44,21 +44,13 @@ bool CEntity::UpdatePawn(const DWORD64& PlayerPawnAddress)
 		return false;
 	if (!this->Pawn.GetHealth())
 		return false;
-	if (!this->Pawn.GetAmmo())
-		return false;
-	if (!this->Pawn.GetMaxAmmo())
-		return false;
 	if (!this->Pawn.GetArmor())
 		return false;
 	if (!this->Pawn.GetTeamID())
 		return false;
-	if (!this->Pawn.GetFov())
-		return false;
 	if (!this->Pawn.GetSpotted())
 		return false;
 	if (!this->Pawn.GetFFlags())
-		return false;
-	if (!this->Pawn.GetDefusing())
 		return false;
 	if (!this->Pawn.GetFlashDuration())
 		return false;

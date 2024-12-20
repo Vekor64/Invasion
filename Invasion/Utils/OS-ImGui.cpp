@@ -99,9 +99,13 @@ namespace OSImGui
         DrawList->PathFillConvex(Color);
     }
 
-    void OSImGui::Line(Vec2 From, Vec2 To, ImColor Color, float Thickness)
+    void OSImGui::Line(Vec2 From, Vec2 To, ImColor Color, float Thickness, bool IsItem)
     {
-        ImGui::GetBackgroundDrawList()->AddLine(From.ToImVec2(), To.ToImVec2(), Color, Thickness);
+        auto DrawList = ImGui::GetBackgroundDrawList();
+
+        if (IsItem)
+            DrawList = ImGui::GetWindowDrawList();
+        DrawList->AddLine(From.ToImVec2(), To.ToImVec2(), Color, Thickness);
     }
 
     void OSImGui::Circle(Vec2 Center, float Radius, ImColor Color, float Thickness, int Num)
@@ -120,9 +124,9 @@ namespace OSImGui
             return;
         for (int i = 0; i < Points.size() - 1; i++)
         {
-            Line(Points[i], Points[i + 1], Color, Thickness);
+            Line(Points[i], Points[i + 1], Color, Thickness, false);
             if (i == Points.size() - 2)
-                Line(Points[i + 1], Points[0], Color, Thickness);
+                Line(Points[i + 1], Points[0], Color, Thickness, false);
         }
     }
 
