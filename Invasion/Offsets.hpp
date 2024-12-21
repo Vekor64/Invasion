@@ -90,6 +90,26 @@ namespace Offset
 
 	struct
 	{
+		DWORD WeaponDataPTR = 0x08;
+		DWORD szName = 0x0;
+		DWORD Clip1 = 0x0;					// C_BasePlayerWeapon::m_iClip1
+		DWORD MaxClip = 0x0;					// CBasePlayerWeaponVData::m_iMaxClip1
+		DWORD CycleTime = 0x0;
+		DWORD Penetration = 0x0;
+		DWORD WeaponType = 0x0;
+		DWORD Inaccuracy = 0x0;				// CCSWeaponBaseVData::m_flInaccuracyMove
+		DWORD inReload = 0x0;
+		DWORD m_nNumBullets = 0x0;
+		DWORD WeaponSize = 0x50;
+		DWORD ActiveWeapon = 0x0;
+		DWORD Item = 0x0;						// C_AttributeContainer::m_Item
+		DWORD ItemDefinitionIndex = 0x0;
+		DWORD m_MeshGroupMask = 0x0;			// CModelState::m_MeshGroupMask
+		DWORD m_bIsFullAuto = 0x0;
+	} WeaponBaseData;
+
+	struct
+	{
 
 		DWORD m_pBulletServices = 0x0;			// CCSPlayer_BulletServices*
 		DWORD m_bIsScoped = 0x0;

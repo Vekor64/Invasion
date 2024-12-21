@@ -5,6 +5,7 @@
 
 namespace MenuConfig
 {
+	inline std::string path = "";
 	inline bool ShowMenu = true;
 	inline int Ping = 0;
 	inline bool TeamCheck = true;
